@@ -3,9 +3,13 @@
 const OpenAI = require("openai");
 const openai = new OpenAI();
 
+const cors = require("cors");
 const express = require("express");
 const app = express();
 app.use(express.json());
+app.use(cors({
+  origin: ['https://paperworkstud.io', 'https://paperworkstud.io/ice']
+}));
 
 async function main() {
   const completion = await openai.chat.completions.create({
