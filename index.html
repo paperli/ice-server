@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ice-Breaker Generator</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <button id="generate-btn">Generate Ice-Breaker Question</button>
+  <p id="question"></p>
+
+  <script>
+    $('#generate-btn').click(function() {
+      $.ajax({
+        url: 'https://localhost:3000/ask',
+        type: 'POST',
+        success: function(data) {
+          $('#question').text(data.answer);
+        },
+        error: function() {
+          $('#question').text('Error generating question');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
